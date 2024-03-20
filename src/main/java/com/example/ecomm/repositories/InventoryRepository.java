@@ -1,6 +1,7 @@
 package com.example.ecomm.repositories;
 
 import com.example.ecomm.models.Inventory;
+import com.example.ecomm.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +13,5 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     Optional<Inventory> findByProductId(int productId);
 
     List<Inventory> findAllByProductIdIn(List<Integer> list);
+    Inventory findByProduct(Product product);
 }

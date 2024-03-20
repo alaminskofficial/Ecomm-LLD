@@ -1,9 +1,7 @@
 package com.example.ecomm.controllers;
 
 
-import com.example.ecomm.dtos.PlaceOrderRequestDto;
-import com.example.ecomm.dtos.PlaceOrderResponseDto;
-import com.example.ecomm.dtos.ResponseStatus;
+import com.example.ecomm.dtos.*;
 import com.example.ecomm.models.Order;
 import com.example.ecomm.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,19 @@ public class OrderController {
             e.printStackTrace();
             placeOrderResponseDto.setStatus(ResponseStatus.FAILURE);
             return placeOrderResponseDto;
+        }
+    }
+    public CancelOrderResponseDto cancelOrder(CancelOrderRequestDto cancelOrderRequestDto) {
+        CancelOrderResponseDto cancelOrderResponseDto = new CancelOrderResponseDto();
+        try{
+            Order order = orderService.cancelOrder(cancelOrderRequestDto.getOrderId(), cancelOrderRequestDto.getUserId());
+            cancelOrderResponseDto.setOrder(order);
+            cancelOrderResponseDto.setStatus(ResponseStatus.SUCCESS);
+            return cancelOrderResponseDto;
+        } catch (Exception e) {
+            e.printStackTrace();
+            cancelOrderResponseDto.setStatus(ResponseStatus.FAILURE);
+            return cancelOrderResponseDto;
         }
     }
 
