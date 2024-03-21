@@ -1,6 +1,8 @@
 package com.example.ecomm.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -9,6 +11,9 @@ public class Product extends BaseModel{
     private String name;
     private String description;
     private double price;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Seller seller;
 
     public String getName() {
         return name;
@@ -32,5 +37,13 @@ public class Product extends BaseModel{
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 }

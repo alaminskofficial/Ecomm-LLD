@@ -17,6 +17,8 @@ public class Address extends BaseModel{
     private String state;
     private String country;
     private String zipCode;
+    private double latitude;
+    private double longitude;
 
     public User getUser() {
         return user;
@@ -88,5 +90,21 @@ public class Address extends BaseModel{
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
