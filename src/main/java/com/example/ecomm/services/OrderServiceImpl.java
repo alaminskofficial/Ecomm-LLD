@@ -128,7 +128,7 @@ public class OrderServiceImpl implements OrderService{
         }
         List<OrderDetail> orderDetails = orderDetailRepository.findAllByOrder(order);
         for(OrderDetail orderDetail: orderDetails) {
-            Inventory inventory = inventoryRepository.findByProduct(orderDetail.getProduct());
+            Inventory inventory = inventoryRepository.findByProduct(orderDetail.getProduct()).orElseThrow(null);
             inventory.setQuantity(inventory.getQuantity() + orderDetail.getQuantity());
             inventoryRepository.save(inventory);
         }

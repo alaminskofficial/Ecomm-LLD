@@ -8,4 +8,6 @@ import com.example.ecomm.models.Inventory;
 public interface InventoryService {
     public Inventory createOrUpdateInventory(int userId, int productId, int quantity) throws ProductNotFoundException, UserNotFoundException, UnAuthorizedAccessException;
     public void deleteInventory(int userId, int productId) throws UserNotFoundException, UnAuthorizedAccessException;
+
+    public Inventory updateInventoryAndNotifyRegisterUser(int productId, int quantity) throws ProductNotFoundException;
 }
