@@ -1,9 +1,9 @@
 package com.example.ecomm.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity(name = "users")
@@ -12,6 +12,8 @@ public class User extends BaseModel{
     private String email;
     @Enumerated(value = EnumType.ORDINAL)
     private UserType userType;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Preference> preferences;
 
     public String getName() {
         return name;
@@ -35,5 +37,13 @@ public class User extends BaseModel{
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public List<Preference> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(List<Preference> preferences) {
+        this.preferences = preferences;
     }
 }
