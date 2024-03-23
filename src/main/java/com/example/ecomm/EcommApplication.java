@@ -3,6 +3,7 @@ package com.example.ecomm;
 import com.example.ecomm.controllers.InventoryController;
 import com.example.ecomm.controllers.OrderController;
 import com.example.ecomm.controllers.ProductController;
+import com.example.ecomm.controllers.RecommendationsController;
 import com.example.ecomm.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +24,9 @@ public class EcommApplication implements CommandLineRunner {
 
 	@Autowired
 	ProductController productController;
+
+	@Autowired
+	RecommendationsController recommendationsController;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcommApplication.class, args);
@@ -47,11 +51,14 @@ public class EcommApplication implements CommandLineRunner {
 //		placeOrderRequestDto.setOrderDetails(lists);
 //		PlaceOrderResponseDto responseDto = orderController.placeOrder(placeOrderRequestDto);
 //		System.out.println(responseDto);
-		DeliveryEstimateRequestDto requestDto = new DeliveryEstimateRequestDto();
-		requestDto.setAddressId(1);
+//		DeliveryEstimateRequestDto requestDto = new DeliveryEstimateRequestDto();
+//		requestDto.setAddressId(1);
+//		requestDto.setProductId(1);
+//		DeliveryEstimateResponseDto responseDto = productController.estimateDeliveryTime(requestDto);
+//		System.out.println(responseDto);
+		GenerateRecommendationsRequestDto requestDto = new GenerateRecommendationsRequestDto();
 		requestDto.setProductId(1);
-		DeliveryEstimateResponseDto responseDto = productController.estimateDeliveryTime(requestDto);
+		GenerateRecommendationsResponseDto responseDto = recommendationsController.generateRecommendations(requestDto);
 		System.out.println(responseDto);
-
 	}
 }
